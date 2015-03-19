@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Students</title>
+</head>
+<body>
+<h1>List of All Students</h1>
+<p>
+  <form action="/deleteall?_method=DELETE" method="POST"><input type="submit" value="Delete All"></form>
+</p>
+<ul>
+  <% if(students.length > 0){ %>
+  <% students.forEach(function(student){ %>
+  <li>
+  <%= student %> <a href="/edit/<%= student %>">edit</a>
+  <form action="/delete/<%= student %>?_method=DELETE" method="POST"><input type="submit" value="X"></form>
+  </li>
+  <% }); %>
+  <% } else{ %>
+</ul>
+<p>Please add students using the form below</p>
+<% } %>
+  
+  <h3>Add A Student</h3>
+  <form action="/create" method="POST">
+    <p><label for="nom">Name: </label>
+    <input type="text" name="nom" id="nom" autofocus required></p>
+    <p><input type="submit" value="Add Student"></p>
+  </form>
+
+
+
+<!-- <h3>Edit Student</h3>
+  <form action="/edit/< %= name %>?_method=PUT" method="POST">
+    <p><label for="nom">Name: </label>
+    <input type="text" name="nom" id="nom" value=< %= name %> autofocus required></p>
+    <p><input type="submit" value="Update"></p>
+  </form> -->
+
+</body>
+</html>
